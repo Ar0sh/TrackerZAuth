@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model BugsViewModel
+@if (SignInManager.IsSignedIn(User))
+{
+    <aside class="page-sidebar bg-dark">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
+        <a class="btn btn-disabled m-1 mt-3">Table</a>
+        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+    </aside>
+    <nav class="page-nav text-left bg-dark">
+        <h3 style="text-align:center; color:white">TrackerZ Table</h3>
+    </nav>
+    <main class="page-scroll bg-dark">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <table class="table table-bordered table-responsive table-condensed table-dark
+                    table-striped table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Title
+                            </th>
+                            <th scope="col" class="d-none d-sm-table-cell" style="width: 30%">
+                                Summary
+                            </th>
+                            <th scope="col">
+                                Category
+                            </th>
+                            <th scope="col">
+                                Status
+                            </th>
+                            <th scope="col" class="d-none d-md-table-cell">
+                                Added
+                            </th>
+                            <th scope="col" class="d-none d-lg-table-cell">
+                                Closed
+                            </th>
+                            <th scope="col">
+                                Options
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bugs in Model.Bugs)
+                        {
+                            <tr>
+                                <td scope="row" class="font-weight-light">
+                                    @Html.DisplayFor(modelItem => bugs.Title)
+                                </td>
+                                <td scope="row" class="font-weight-light d-none d-sm-table-cell" style="max-width: 300px">
+                                    @Html.DisplayFor(modelItem => bugs.Text)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => bugs.CatName)
+                                </td>
+                                @if (bugs.Status == "Open")
+                                {
+                                    <td scope="row" class="font-weight-light bg-danger">
+                                        @Html.DisplayFor(modelItem => bugs.Status)
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td scope="row" class="font-weight-light bg-success">
+                                        @Html.DisplayFor(modelItem => bugs.Status)
+                                    </td>
+                                }
+                                <td scope="row" class="font-weight-light d-none d-md-table-cell">
+                                    @Html.DisplayFor(modelItem => bugs.Added)
+                                </td>
+                                <td scope="row" class="font-weight-light d-none d-lg-table-cell">
+                                    @Html.DisplayFor(modelItem => bugs.Closed)
+                                </td>
+                                <td class="text-center font-weight-light">
+                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary">Edit</a>
+                                    @if (bugs.Closed == null)
+                                    {
+                                        <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary">Close</a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+}
+else
+{
+    <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Login">Return to Login</a>
+}

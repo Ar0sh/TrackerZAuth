@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<aside class="page-sidebar bg-dark">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
+    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
+    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+</aside>
+<nav class="page-nav text-left bg-dark">
+    <h1 style="text-align:center; color:white; text-transform:none">@ViewData["Title"]</h1>
+</nav>
+<main class="page-main bg-dark">
+    <p style="color:white; text-transform:none">Copyright &copy; @DateTime.Now.Year Frode Ulriksen</p>
+</main>
