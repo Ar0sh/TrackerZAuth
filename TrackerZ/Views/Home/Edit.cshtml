@@ -1,99 +1,99 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@*@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject UserManager<IdentityUser> UserManager*@
 @model BugsViewModel
 @{
     var bug = Model.EditBug;
     var CatIdNr = bug.CatIdNr;
 }
-@if (SignInManager.IsSignedIn(User))
+@*@if (SignInManager.IsSignedIn(User))
 {
-    <script type="text/javascript">
-        function validate() {
-            var goon = true;
-            if (document.getElementById('idTitle').value == '') {
-                document.getElementById('lblTitleID').innerHTML = 'Input required';
-                goon = false;
-            }
-            else {
-                document.getElementById('lblTitleID').innerHTML = '';
-            }
-            if (document.getElementById('idSummary').value == '') {
-                document.getElementById('lblSummaryID').innerHTML = 'Input required';
-                goon = false;
-            }
-            else {
-                document.getElementById('lblSummaryID').innerHTML = '';
-            }
-            if (goon == false) {
-                return false;
-            }
-            else
-                return true;
+}*@
+<script type="text/javascript">
+    function validate() {
+        var goon = true;
+        if (document.getElementById('idTitle').value == '') {
+            document.getElementById('lblTitleID').innerHTML = 'Input required';
+            goon = false;
         }
-    </script>
+        else {
+            document.getElementById('lblTitleID').innerHTML = '';
+        }
+        if (document.getElementById('idSummary').value == '') {
+            document.getElementById('lblSummaryID').innerHTML = 'Input required';
+            goon = false;
+        }
+        else {
+            document.getElementById('lblSummaryID').innerHTML = '';
+        }
+        if (goon == false) {
+            return false;
+        }
+        else
+            return true;
+    }
+</script>
 
-    <aside class="page-sidebar bg-dark">
-        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
-        <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
-        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
-    </aside>
-    <nav class="page-nav text-left bg-dark">
-        <h3 style="text-align:center; color:white">Edit "@bug.Title"</h3>
-    </nav>
-    <main class="page-main bg-dark">
-        <div class="text-center">
-            <form method="post" asp-action="EditTheBug" onsubmit="return validate()">
-                <div>
-                    <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 120px">
-                        <h4 style="grid-column-start: 1; grid-column-end: 2">
-                            Title
-                        </h4>
-                        <div style="grid-column-start: 3; grid-column-end: 4">
-                            <textarea type="text" class="text-sm-left textarea-noresize" name="title"
-                                      id="idTitle">@Html.DisplayFor(modelItem => bug.Title)</textarea>
-                        </div>
-                        <div style="grid-column-start: 4; grid-column-end: 5">
-                            <label id="lblTitleID" style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
-                        </div>
-                        <h4 style="grid-column-start: 1; grid-column-end: 2">
-                            Category
-                        </h4>
-                        <div style="grid-column-start: 3; grid-column-end: 4">
-                            <div style="float:left; padding:5px">@Html.DropDownListFor(model => CatIdNr, Model.BaseCatSelectList)</div>
-                        </div>
-                        <h4 style="grid-column-start: 1; grid-column-end: 2">
-                            Summary
-                        </h4>
-                        <div style="grid-column-start: 3; grid-column-end: 4">
-                            <textarea type="text" name="text" id="idSummary"
-                                      class="textarea-text">@Html.DisplayFor(modelItem => bug.Text)</textarea>
-                        </div>
-                        <div style="grid-column-start: 4; grid-column-end: 5">
-                            <label id="lblSummaryID"
-                                   style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
-                        </div>
-                        <h4 style="grid-column-start: 1; grid-column-end: 2">
-                            Status
-                        </h4>
-                        <div style="grid-column-start: 3; grid-column-end: 4">
-                            <div style="float:left; padding:5px">@Html.DropDownListFor(model => model.StatusIndex, Model.StatusOC)</div>
-                        </div>
-                        <div style="grid-column-start: 1; grid-column-end: 5">
-                            <button type="submit" class="btn btn-primary m-1" style="width: 100px">Save</button>
-                            <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1" style="width: 100px; text-transform:none">Cancel</a>
-                            <a asp-controller="Home" asp-action="Remove" asp-route-id="@bug.Id" class="btn btn-delete m-1" style="width: 100px; text-transform:none">Delete</a>
-                        </div>
-                        <div>
-                            <input type="hidden" name="id" value="@Html.DisplayFor(modelItem => bug.Id)">
-                            <input type="hidden" name="oldStatus" value="@Html.DisplayFor(modelItem => bug.Status)" />
-                        </div>
+<aside class="page-sidebar bg-dark">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
+    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
+    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+</aside>
+<nav class="page-nav text-left bg-dark">
+    <h3 style="text-align:center; color:white">Edit "@bug.Title"</h3>
+</nav>
+<main class="page-main bg-dark">
+    <div class="text-center">
+        <form method="post" asp-action="EditTheBug" onsubmit="return validate()">
+            <div>
+                <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 120px">
+                    <h4 style="grid-column-start: 1; grid-column-end: 2">
+                        Title
+                    </h4>
+                    <div style="grid-column-start: 3; grid-column-end: 4">
+                        <textarea type="text" class="text-sm-left textarea-noresize" name="title"
+                                    id="idTitle">@Html.DisplayFor(modelItem => bug.Title)</textarea>
                     </div>
-                    @*<a asp-controller="Home" asp-action="Check" asp-route-title="AspTest" asp-route-text="AspText" asp-route-status="AspOpen" class="btn btn-primary m-1">Submit</a>*@
-                    @*<a asp-controller="Home" asp-action="Check" asp-route-title="AspTest" asp-route-text="AspText" asp-route-status="AspOpen" class="btn btn-primary m-1">Submit</a>*@
-
+                    <div style="grid-column-start: 4; grid-column-end: 5">
+                        <label id="lblTitleID" style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
+                    </div>
+                    <h4 style="grid-column-start: 1; grid-column-end: 2">
+                        Category
+                    </h4>
+                    <div style="grid-column-start: 3; grid-column-end: 4">
+                        <div style="float:left; padding:5px">@Html.DropDownListFor(model => CatIdNr, Model.BaseCatSelectList)</div>
+                    </div>
+                    <h4 style="grid-column-start: 1; grid-column-end: 2">
+                        Summary
+                    </h4>
+                    <div style="grid-column-start: 3; grid-column-end: 4">
+                        <textarea type="text" name="text" id="idSummary"
+                                    class="textarea-text">@Html.DisplayFor(modelItem => bug.Text)</textarea>
+                    </div>
+                    <div style="grid-column-start: 4; grid-column-end: 5">
+                        <label id="lblSummaryID"
+                                style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
+                    </div>
+                    <h4 style="grid-column-start: 1; grid-column-end: 2">
+                        Status
+                    </h4>
+                    <div style="grid-column-start: 3; grid-column-end: 4">
+                        <div style="float:left; padding:5px">@Html.DropDownListFor(model => model.StatusIndex, Model.StatusOC)</div>
+                    </div>
+                    <div style="grid-column-start: 1; grid-column-end: 5">
+                        <button type="submit" class="btn btn-primary m-1" style="width: 100px">Save</button>
+                        <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1" style="width: 100px; text-transform:none">Cancel</a>
+                        <a asp-controller="Home" asp-action="Remove" asp-route-id="@bug.Id" class="btn btn-delete m-1" style="width: 100px; text-transform:none">Delete</a>
+                    </div>
+                    <div>
+                        <input type="hidden" name="id" value="@Html.DisplayFor(modelItem => bug.Id)">
+                        <input type="hidden" name="oldStatus" value="@Html.DisplayFor(modelItem => bug.Status)" />
+                    </div>
                 </div>
-            </form>
-        </div>
-    </main>
-}
+                @*<a asp-controller="Home" asp-action="Check" asp-route-title="AspTest" asp-route-text="AspText" asp-route-status="AspOpen" class="btn btn-primary m-1">Submit</a>*@
+                @*<a asp-controller="Home" asp-action="Check" asp-route-title="AspTest" asp-route-text="AspText" asp-route-status="AspOpen" class="btn btn-primary m-1">Submit</a>*@
+
+            </div>
+        </form>
+    </div>
+</main>
