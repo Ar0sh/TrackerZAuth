@@ -1,7 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 @model BugsViewModel
@@ -9,22 +6,19 @@
     int all = Model.BugCounter;
     int closed = Model.ClosedBugs;
 }
-@if (SignInManager.IsSignedIn(User))
-{
-    <aside class="page-sidebar bg-dark">
-        <a class="btn btn-disabled m-1 mt-3">Home</a>
-        <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
-        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
-    </aside>
-    <nav class="page-nav text-left bg-dark">
-        <h3 style="text-align:center; color:white">Overview</h3>
-    </nav>
-    <main class="page-main bg-dark">
-        <div class="text-center">
-            <div>
-                <h4 style="color:white;text-transform:none">Number of incidents: @all</h4>
-                <h4 style="color:white;text-transform:none">Number of closed incidents: @closed</h4>
-            </div>
+<aside class="page-sidebar bg-dark">
+    <a class="btn btn-disabled m-1 mt-3">Home</a>
+    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
+    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+</aside>
+<nav class="page-nav text-left bg-dark">
+    <h3 style="text-align:center; color:white">Overview</h3>
+</nav>
+<main class="page-main bg-dark">
+    <div class="text-center">
+        <div>
+            <h4 style="color:white;text-transform:none">Number of incidents: @all</h4>
+            <h4 style="color:white;text-transform:none">Number of closed incidents: @closed</h4>
         </div>
-    </main>
-}
+    </div>
+</main>

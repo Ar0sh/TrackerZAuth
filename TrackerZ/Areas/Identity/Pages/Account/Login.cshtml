@@ -1,0 +1,64 @@
+﻿@page
+@model Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal.LoginModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Login";
+}
+<aside class="page-sidebar bg-dark">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="btn btn-disabled m-1 mt-3">Home</a>
+        <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
+        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+    }
+</aside>
+<nav class="page-nav text-left bg-dark">
+    <h3 style="text-align:center; color:white">Log in</h3>
+</nav>
+<main class="page-main bg-dark">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post" asp-antiforgery="true">
+                @*<div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 100px auto 100px">*@
+                @*<hr />*@
+
+                <div class="form-group">
+                    <label for="Input_Email" class="text-light">Email</label>
+                    <input class="form-control text-light" autocomplete="username" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Input_Email" name="Input.Email" value="" />
+                    <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Input_Password" class="text-light">Password</label>
+                    <input class="form-control text-light" autocomplete="current-password" type="password" data-val="true" data-val-required="The Password field is required." id="Input_Password" name="Input.Password" />
+                    <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label for="Input_RememberMe" class="text-light">
+                            <input type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="Input_RememberMe" name="Input.RememberMe" value="true" />
+                            Remember me?
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button id="login-submit" type="submit" class="btn btn-primary">Log in</button>
+                </div>
+                <div class="form-group">
+                    @*<p>
+                        <a id="forgot-password" href="/Identity/Account/ForgotPassword">Forgot your password?</a>
+                    </p>*@
+                    <p>
+                        <a href="/Identity/Account/Register?returnUrl=%2F" class="btn btn-primary m-1 mt-3">Register as a new user</a>
+                    </p>
+                    @*<p>
+                        <a id="resend-confirmation" href="/Identity/Account/ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>*@
+                </div>
+                <input name="Input.RememberMe" type="hidden" value="false" />
+                @*</div>*@
+            </form>
+        </section>
+    </div>
+</main>
