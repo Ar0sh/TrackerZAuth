@@ -1,0 +1,12 @@
+﻿@page
+@model Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal.LogoutModel
+@{
+    ViewData["Title"] = "Logout";
+}
+<div class="text-light text-center" style="text-transform: none">
+    <h1>Log Out</h1>
+    <hr />
+    <form class="form-inline" method="post" action="/Identity/Account/Logout?returnUrl=%2F%3Fpage%3D%252F" asp-antiforgery="true">
+        <button type="submit" class="btn btn-primary" style="width:200px; margin:0 auto">Click here to Logout</button>
+    </form>
+</div>
