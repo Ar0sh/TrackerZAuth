@@ -7,15 +7,15 @@
     int closed = Model.ClosedBugs;
 }
 
-<aside class="page-sidebar" style="background-color:#1A1A1D">
-    <a class="btn btn-disabled m-1 mt-3" style="background-color:#4e4e50; color:#1a1a1d">Home</a>
-    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3" style="background-color:#950740">Table</a>
-    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3" style="background-color:#950740">New Incident</a>
+<aside class="page-sidebar">
+    <a class="btn btn-disabled m-1 mt-3">Home</a>
+    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
+    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
 </aside>
-<nav class="page-nav text-left" style="background-color: #1A1A1D">
+<nav class="page-nav text-left">
     <h3 style="text-align:center; color:white">Overview</h3>
 </nav>
-<main class="page-main" style="background-color:#1A1A1D">
+<main class="page-main">
     <div class="text-center">
         <div>
             <h4 style="color:white;text-transform:none">Number of incidents: @all</h4>

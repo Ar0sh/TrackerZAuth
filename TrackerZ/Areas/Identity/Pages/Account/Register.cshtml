@@ -6,7 +6,7 @@
 @{
     ViewData["Title"] = "Register";
 }
-<aside class="page-sidebar bg-dark">
+<aside class="page-sidebar">
     @if (SignInManager.IsSignedIn(User))
     {
         <a class="btn btn-disabled m-1 mt-3">Home</a>
@@ -14,10 +14,10 @@
         <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
     }
 </aside>
-<nav class="page-nav text-left bg-dark">
+<nav class="page-nav text-left">
     <h3 style="text-align:center; color:white">Register</h3>
 </nav>
-<main class="page-main bg-dark">
+<main class="page-main">
     <div class="col-md-4">
         <form id="registerForm" method="post" action="/Identity/Account/Register" asp-antiforgery="true">
             <h4>Create a new account.</h4>

@@ -25,15 +25,15 @@
         }
     </script>
 
-    <aside class="page-sidebar" style="background: #1A1A1D">
-        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3" style="background-color:#950740">Home</a>
-        <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3" style="background-color:#950740">Table</a>
-        <a class="btn btn-disabled m-1 mt-3" style="background-color:#4e4e50; color:#1a1a1d">New Incident</a>
+    <aside class="page-sidebar">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
+        <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
+        <a class="btn btn-disabled m-1 mt-3">New Incident</a>
     </aside>
-    <nav class="page-nav text-left" style="background: #1A1A1D">
+    <nav class="page-nav text-left">
         <h3 style="text-align:center; color:white">New Incident</h3>
     </nav>
-    <main class="page-main" style="background: #1A1A1D">
+    <main class="page-main">
         <form method="post" asp-action="SubmitBug" onsubmit="return validate()">
             <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 120px">
                 <h4 style="grid-column-start: 1; grid-column-end: 2">
@@ -80,8 +80,8 @@
                     </div>
                 </div>
                 <div style="grid-column-start: 1; grid-column-end: 5">
-                    <button type="submit" class="btn btn-primary m-1" style="width: 100px; background-color:#950740">Submit</button>
-                    <a asp-controller="Home" asp-action="Index" style="width: 100px; text-transform:none" class="btn btn-delete m-1">Cancel</a>
+                    <button type="submit" class="btn btn-primary m-1" style="width: 100px">Submit</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-danger m-1" style="width: 100px">Cancel</a>
                 </div>
             </div>
         </form>

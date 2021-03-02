@@ -14,21 +14,21 @@
     </script>
 
 
-    <aside class="page-sidebar" style="background-color:#1A1A1D">
-        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3" style="background-color:#950740">Home</a>
-        <a class="btn btn-disabled m-1 mt-3" style="background-color:#4e4e50; color:#1a1a1d">Table</a>
-        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3" style="background-color:#950740">New Incident</a>
+    <aside class="page-sidebar">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
+        <a class="btn btn-disabled m-1 mt-3">Table</a>
+        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
     </aside>
-    <nav class="page-nav text-left" style="background-color:#1A1A1D">
+    <nav class="page-nav text-left">
         <h3 style="text-align:center; color:white">TrackerZ Table</h3>
     </nav>
-    <main class="page-scroll" style="background-color:#1A1A1D">
+    <main class="page-scroll">
         <div class="row justify-content-center">
             <div class="col-auto">
                 <table class="table table-bordered table-responsive table-condensed
-                table-hover table-sm table-responsive-data2" id="dtBasicExample">
+                       table-sm table-responsive-data2" id="dtBasicExample" style="color:white">
                     <thead>
-                        <tr style="border:1px; border-style:solid; border-color:white; background:#6f2232; color:white">
+                        <tr style="border:1px; border-style:solid; border-color:white; background:#6f2232">
                             <th scope="col">
                                 Title
                             </th>
@@ -57,7 +57,7 @@
                         {
                             if (count % 2 == 0)
                             {
-                                <tr style="background:#c3073f; color:white">
+                                <tr style="background:#c3073f">
                                     <td scope="row" class="font-weight-light">
                                         @Html.DisplayFor(modelItem => bugs.Title)
                                     </td>
@@ -86,17 +86,17 @@
                                         @Html.DisplayFor(modelItem => bugs.Closed)
                                     </td>
                                     <td class="text-center font-weight-light">
-                                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Edit</a>
+                                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary">Edit</a>
                                         @if (bugs.Closed == null)
                                         {
-                                            <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Close</a>
+                                            <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary">Close</a>
                                         }
                                     </td>
                                 </tr>
                             }
                             else
                             {
-                                <tr style="background:#6f2232; color:white">
+                                <tr style="background:#6f2232">
                                     <td scope="row" class="font-weight-light">
                                         @Html.DisplayFor(modelItem => bugs.Title)
                                     </td>
@@ -125,10 +125,10 @@
                                         @Html.DisplayFor(modelItem => bugs.Closed)
                                     </td>
                                     <td class="text-center font-weight-light">
-                                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Edit</a>
+                                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary">Edit</a>
                                         @if (bugs.Closed == null)
                                         {
-                                            <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Close</a>
+                                            <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary">Close</a>
                                         }
                                     </td>
                                 </tr>

@@ -4,12 +4,12 @@
   word-break: break-all;
 }*/
 a {
-    color: #950740 !important;
+    color: white;
 }
 
 .btn-primary {
-    color: #ffd800;
-    background-color: #1a1a1d;
+    color: white;
+    background-color: #950740;
     border-color: #000000;
     border-radius: 0;
     font-size: 14px;
@@ -17,20 +17,29 @@ a {
     padding: 3px;
 }
 
-.btn-delete {
+.btn-danger {
     color: #ffd800;
-    background-color: #ff0000;
+    background-color: rgba(255, 0, 0, 0.70);
     border-color: #000000;
     border-radius: 0;
     font-size: 14px;
     width: 100%;
     padding: 3px;
-    margin-top: 10px;
+}
+
+.btn-secondary {
+    color: #ffd800;
+    background-color: rgba(255, 0, 0, 0.70);
+    border-color: #000000;
+    border-radius: 0;
+    font-size: 14px;
+    width: 100%;
+    padding: 3px;
 }
 
 .btn-disabled {
-    color: #000000;
-    background-color: #808080;
+    background-color: #4e4e50;
+    color: #1a1a1d;
     border-color: #000000;
     border-radius: 0;
     font-size: 14px;
@@ -69,22 +78,30 @@ body {
 
 .page-header {
     grid-column: 1/-1;
+    color: white;
+    background-color: #1a1a1d;
 }
 
 .page-sidebar {
     grid-column: 1/2;
     grid-row: 2/4;
     height: 100%;
+    color: white;
+    background-color: #1a1a1d;
 }
 
 .page-nav {
     grid-column: 2/3;
+    color: white;
+    background-color: #1a1a1d;
 }
 
 .page-main {
     grid-column: 2/3;
     height: 100%;
     display: block;
+    color: white;
+    background-color: #1a1a1d;
     /*overflow:scroll;
     overflow-x:hidden;*/
 }
@@ -94,6 +111,8 @@ body {
     height: 100%;
     overflow: scroll;
     overflow-x: hidden;
+    color: white;
+    background-color: #1a1a1d;
 }
 
 .page-footer {
