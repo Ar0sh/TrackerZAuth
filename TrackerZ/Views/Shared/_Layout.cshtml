@@ -4,38 +4,39 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TrackerZ</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <partial name="_CookieConsentPartial" />
     <div class="page-wrap">
-        <header class="page-header navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
+        <header class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow page-header"
+                style="background-color:#1A1A1D; text-transform:none">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TrackerZ</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand" style="color:#C3073F" asp-area="" asp-controller="Home" asp-action="Index">Tracker<span style="color:#950740">Z</span></a>
+                <button class="navbar-toggler navbar-dark" style="background-color:#950740" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" style="color:#C3073F" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" style="color:#C3073F" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <partial name="_LoginPartial" />
                     </ul>
                 </div>
             </div>
         </header>
-        @RenderBody()
-        <footer class="page-footer bg-dark">
-            <div class="container" style="color:white; text-transform:none">
-                &copy; 2021 - TrackerZ - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        @RenderBody() 
+        <div class="page-footer color" style="background-color:#1A1A1D">
+            <div class="container" style="color:#C3073F; text-transform:none">
+                &copy; 2021 - Tracker<span style="color:#950740">Z</span> - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color:#950740">Privacy</a>
             </div>
-        </footer>
+        </div>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>

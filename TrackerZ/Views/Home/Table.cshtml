@@ -3,7 +3,9 @@
     ViewData["Title"] = "Home Page";
 }
 @model BugsViewModel
-
+@{ 
+    var count = 0;
+}
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -12,21 +14,21 @@
     </script>
 
 
-    <aside class="page-sidebar bg-dark">
-        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
-        <a class="btn btn-disabled m-1 mt-3">Table</a>
-        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+    <aside class="page-sidebar" style="background-color:#1A1A1D">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3" style="background-color:#950740">Home</a>
+        <a class="btn btn-disabled m-1 mt-3" style="background-color:#4e4e50; color:#1a1a1d">Table</a>
+        <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3" style="background-color:#950740">New Incident</a>
     </aside>
-    <nav class="page-nav text-left bg-dark">
+    <nav class="page-nav text-left" style="background-color:#1A1A1D">
         <h3 style="text-align:center; color:white">TrackerZ Table</h3>
     </nav>
-    <main class="page-scroll bg-dark">
+    <main class="page-scroll" style="background-color:#1A1A1D">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <table class="table table-bordered table-responsive table-condensed table-dark
-                table-striped table-hover table-sm table-responsive-data2" id="dtBasicExample">
+                <table class="table table-bordered table-responsive table-condensed
+                table-hover table-sm table-responsive-data2" id="dtBasicExample">
                     <thead>
-                        <tr>
+                        <tr style="border:1px; border-style:solid; border-color:white; background:#6f2232; color:white">
                             <th scope="col">
                                 Title
                             </th>
@@ -53,42 +55,85 @@
                     <tbody>
                         @foreach (var bugs in Model.Bugs)
                         {
-                            <tr>
-                                <td scope="row" class="font-weight-light">
-                                    @Html.DisplayFor(modelItem => bugs.Title)
-                                </td>
-                                <td scope="row" class="font-weight-light d-none d-sm-table-cell" style="max-width: 300px">
-                                    @Html.DisplayFor(modelItem => bugs.Text)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => bugs.CatName)
-                                </td>
-                                @if (bugs.Status == "Open")
-                                {
-                                    <td scope="row" class="font-weight-light bg-danger">
-                                        @Html.DisplayFor(modelItem => bugs.Status)
+                            if (count % 2 == 0)
+                            {
+                                <tr style="background:#c3073f; color:white">
+                                    <td scope="row" class="font-weight-light">
+                                        @Html.DisplayFor(modelItem => bugs.Title)
                                     </td>
-                                }
-                                else
-                                {
-                                    <td scope="row" class="font-weight-light bg-success">
-                                        @Html.DisplayFor(modelItem => bugs.Status)
+                                    <td scope="row" class="font-weight-light d-none d-sm-table-cell" style="max-width: 300px">
+                                        @Html.DisplayFor(modelItem => bugs.Text)
                                     </td>
-                                }
-                                <td scope="row" class="font-weight-light d-none d-md-table-cell">
-                                    @Html.DisplayFor(modelItem => bugs.Added)
-                                </td>
-                                <td scope="row" class="font-weight-light d-none d-lg-table-cell">
-                                    @Html.DisplayFor(modelItem => bugs.Closed)
-                                </td>
-                                <td class="text-center font-weight-light">
-                                    <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary">Edit</a>
-                                    @if (bugs.Closed == null)
+                                    <td>
+                                        @Html.DisplayFor(modelItem => bugs.CatName)
+                                    </td>
+                                    @if (bugs.Status == "Open")
                                     {
-                                        <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary">Close</a>
+                                        <td scope="row" class="font-weight-light bg-danger">
+                                            @Html.DisplayFor(modelItem => bugs.Status)
+                                        </td>
                                     }
-                                </td>
-                            </tr>
+                                    else
+                                    {
+                                        <td scope="row" class="font-weight-light bg-success">
+                                            @Html.DisplayFor(modelItem => bugs.Status)
+                                        </td>
+                                    }
+                                    <td scope="row" class="font-weight-light d-none d-md-table-cell">
+                                        @Html.DisplayFor(modelItem => bugs.Added)
+                                    </td>
+                                    <td scope="row" class="font-weight-light d-none d-lg-table-cell">
+                                        @Html.DisplayFor(modelItem => bugs.Closed)
+                                    </td>
+                                    <td class="text-center font-weight-light">
+                                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Edit</a>
+                                        @if (bugs.Closed == null)
+                                        {
+                                            <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Close</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr style="background:#6f2232; color:white">
+                                    <td scope="row" class="font-weight-light">
+                                        @Html.DisplayFor(modelItem => bugs.Title)
+                                    </td>
+                                    <td scope="row" class="font-weight-light d-none d-sm-table-cell" style="max-width: 300px">
+                                        @Html.DisplayFor(modelItem => bugs.Text)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => bugs.CatName)
+                                    </td>
+                                    @if (bugs.Status == "Open")
+                                    {
+                                        <td scope="row" class="font-weight-light bg-danger">
+                                            @Html.DisplayFor(modelItem => bugs.Status)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td scope="row" class="font-weight-light bg-success">
+                                            @Html.DisplayFor(modelItem => bugs.Status)
+                                        </td>
+                                    }
+                                    <td scope="row" class="font-weight-light d-none d-md-table-cell">
+                                        @Html.DisplayFor(modelItem => bugs.Added)
+                                    </td>
+                                    <td scope="row" class="font-weight-light d-none d-lg-table-cell">
+                                        @Html.DisplayFor(modelItem => bugs.Closed)
+                                    </td>
+                                    <td class="text-center font-weight-light">
+                                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Edit</a>
+                                        @if (bugs.Closed == null)
+                                        {
+                                            <a asp-controller="Home" asp-action="CloseBug" asp-route-id="@bugs.Id" class="btn btn-primary" style="background-color:#950740">Close</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            count++;
                         }
                     </tbody>
                 </table>
