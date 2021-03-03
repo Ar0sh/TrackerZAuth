@@ -1,27 +1,44 @@
 ﻿@model BugsViewModel
 
     <script type="text/javascript">
-        function validate() {
+        function validate()
+        {
             var goon = true;
-            if (document.getElementById('idTitle').value == '') {
-                document.getElementById('lblTitleID').innerHTML = 'Input required';
+            if (document.getElementById('idTitle').value == '')
+            {
+                //document.getElementById('lblTitleID').innerHTML = 'Input required';
+                document.getElementById('idTitle').placeholder = 'Input Required!';
+                document.getElementById('idTitle').style.borderColor = 'red';
+                document.getElementById('idTitle').style.borderWidth = '2px';
                 goon = false;
             }
-            else {
+            else
+            {
                 document.getElementById('lblTitleID').innerHTML = '';
+                document.getElementById('idTitle').style.borderColor = 'none';
+                document.getElementById('idTitle').style.borderWidth = '0';
             }
             if (document.getElementById('idSummary').value == '') {
-                document.getElementById('lblSummaryID').innerHTML = 'Input required';
+                //document.getElementById('lblSummaryID').innerHTML = 'Input required';
+                document.getElementById('idSummary').placeholder = 'Input Required!';
+                document.getElementById('idSummary').style.borderColor = 'red';
+                document.getElementById('idSummary').style.borderWidth = '2px';
                 goon = false;
             }
-            else {
+            else
+            {
                 document.getElementById('lblSummaryID').innerHTML = '';
+                document.getElementById('idTitle').style.borderColor = 'none';
+                document.getElementById('idTitle').style.borderWidth = '0';
             }
-            if (goon == false) {
+            if (goon == false)
+            {
                 return false;
             }
             else
+            {
                 return true;
+            }
         }
     </script>
 
@@ -31,13 +48,13 @@
         <a class="btn btn-disabled m-1 mt-3">New Incident</a>
     </aside>
     <nav class="page-nav text-left">
-        <h3 style="text-align:center; color:white">New Incident</h3>
+        <h3 style="text-align:center; color:white"><span style="color:#52d6f4">N</span>ew Incident</h3>
     </nav>
     <main class="page-main">
         <form method="post" asp-action="SubmitBug" onsubmit="return validate()">
-            <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 120px">
+            <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 10px">
                 <h4 style="grid-column-start: 1; grid-column-end: 2">
-                    Title
+                    <span style="color:#52d6f4">T</span>itle
                 </h4>
                 <div style="grid-column-start: 3; grid-column-end: 4">
                     <textarea type="text" class="text-sm-left textarea-noresize" name="title" id="idTitle" value=""></textarea>
@@ -46,7 +63,7 @@
                     <label id="lblTitleID" style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
                 </div>
                 <h4 style="grid-column-start: 1; grid-column-end: 2">
-                    Category
+                    <span style="color:#52d6f4">C</span>ategory
                 </h4>
                 <div style="grid-column-start: 3; grid-column-end: 4">
                     <div style="float:left; padding:5px">
@@ -59,17 +76,13 @@
                     </div>
                 </div>
                 <h4 style="grid-column-start: 1; grid-column-end: 2">
-                    Summary
+                    <span style="color:#52d6f4">S</span>ummary
                 </h4>
                 <div style="grid-column-start: 3; grid-column-end: 4">
                     <textarea type="text" class="text-sm-left textarea-text" name="text" id="idSummary" value=""></textarea>
                 </div>
-                <div style="grid-column-start: 4; grid-column-end: 5">
-                    <label id="lblSummaryID"
-                            style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
-                </div>
                 <h4 style="grid-column-start: 1; grid-column-end: 2">
-                    Status
+                    <span style="color:#52d6f4">S</span>tatus
                 </h4>
                 <div style="grid-column-start: 3; grid-column-end: 4">
                     <div style="float:left; padding:5px">

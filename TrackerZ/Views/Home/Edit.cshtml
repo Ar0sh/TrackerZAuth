@@ -13,24 +13,35 @@
     function validate() {
         var goon = true;
         if (document.getElementById('idTitle').value == '') {
-            document.getElementById('lblTitleID').innerHTML = 'Input required';
+            //document.getElementById('lblTitleID').innerHTML = 'Input required';
+            document.getElementById('idTitle').placeholder = 'Input Required!';
+            document.getElementById('idTitle').style.borderColor = 'red';
+            document.getElementById('idTitle').style.borderWidth = '2px';
             goon = false;
         }
         else {
             document.getElementById('lblTitleID').innerHTML = '';
+            document.getElementById('idTitle').style.borderColor = 'none';
+            document.getElementById('idTitle').style.borderWidth = '0';
         }
         if (document.getElementById('idSummary').value == '') {
-            document.getElementById('lblSummaryID').innerHTML = 'Input required';
+            //document.getElementById('lblSummaryID').innerHTML = 'Input required';
+            document.getElementById('idSummary').placeholder = 'Input Required!';
+            document.getElementById('idSummary').style.borderColor = 'red';
+            document.getElementById('idSummary').style.borderWidth = '2px';
             goon = false;
         }
         else {
             document.getElementById('lblSummaryID').innerHTML = '';
+            document.getElementById('idTitle').style.borderColor = 'none';
+            document.getElementById('idTitle').style.borderWidth = '0';
         }
         if (goon == false) {
             return false;
         }
-        else
+        else {
             return true;
+        }
     }
 </script>
 
@@ -46,9 +57,9 @@
     <div class="text-center">
         <form method="post" asp-action="EditTheBug" onsubmit="return validate()">
             <div>
-                <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 120px">
+                <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 10px">
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
-                        Title
+                        <span style="color:#52d6f4">T</span>itle
                     </h4>
                     <div style="grid-column-start: 3; grid-column-end: 4">
                         <textarea type="text" class="text-sm-left textarea-noresize" name="title"
@@ -58,13 +69,13 @@
                         <label id="lblTitleID" style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
                     </div>
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
-                        Category
+                        <span style="color:#52d6f4">C</span>ategory
                     </h4>
                     <div style="grid-column-start: 3; grid-column-end: 4">
                         <div style="float:left; padding:5px">@Html.DropDownListFor(model => CatIdNr, Model.BaseCatSelectList)</div>
                     </div>
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
-                        Summary
+                        <span style="color:#52d6f4">S</span>ummary
                     </h4>
                     <div style="grid-column-start: 3; grid-column-end: 4">
                         <textarea type="text" name="text" id="idSummary"
@@ -75,7 +86,7 @@
                                 style="float:left; color:red; text-transform:none; margin-left: 10px; margin-top: 3px"></label>
                     </div>
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
-                        Status
+                        <span style="color:#52d6f4">S</span>tatus
                     </h4>
                     <div style="grid-column-start: 3; grid-column-end: 4">
                         <div style="float:left; padding:5px">@Html.DropDownListFor(model => model.StatusIndex, Model.StatusOC)</div>
@@ -83,7 +94,7 @@
                     <div style="grid-column-start: 1; grid-column-end: 5">
                         <button type="submit" class="btn btn-primary m-1" style="width: 100px">Save</button>
                         <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1" style="width: 100px; text-transform:none">Cancel</a>
-                        <a asp-controller="Home" asp-action="Remove" asp-route-id="@bug.Id" class="btn btn-delete m-1" style="width: 100px; text-transform:none">Delete</a>
+                        <a asp-controller="Home" asp-action="Remove" asp-route-id="@bug.Id" class="btn btn-danger m-1" style="width: 100px; text-transform:none">Delete</a>
                     </div>
                     <div>
                         <input type="hidden" name="id" value="@Html.DisplayFor(modelItem => bug.Id)">

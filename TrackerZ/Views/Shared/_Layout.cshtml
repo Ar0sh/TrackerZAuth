@@ -7,24 +7,33 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
+@*
+    Colors:
+    #363538 - dark
+    #8d8c8a - grey
+    #f6f6f6 - light
+    #408697 - dim blue
+    #52d6f4 - bright blue
+*@
 <body>
     <partial name="_CookieConsentPartial" />
     <div class="page-wrap">
-        <header class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow page-header"
-                style="background-color:#1A1A1D; text-transform:none">
+        <header class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow page-header"
+                style="text-transform:none">
             <div class="container">
-                <a class="navbar-brand" style="color:#C3073F" asp-area="" asp-controller="Home" asp-action="Index">Tracker<span style="color:#950740">Z</span></a>
-                <button class="navbar-toggler navbar-dark" style="background-color:#950740" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand" style="color:#f6f6f6" asp-area="" asp-controller="Home" asp-action="Index">Tracker<span style="color:#52d6f4">Z</span></a>
+                <button class="navbar-toggler navbar-dark" style="background-color:#52d6f4" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" style="color:#C3073F" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><span style="color:#52d6f4">H</span>ome</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="color:#C3073F" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy"><span style="color:#52d6f4">P</span>rivacy</a>
                         </li>
                         <partial name="_LoginPartial" />
                     </ul>
@@ -32,9 +41,9 @@
             </div>
         </header>
         @RenderBody() 
-        <div class="page-footer color" style="background-color:#1A1A1D">
-            <div class="container" style="color:#C3073F; text-transform:none">
-                &copy; 2021 - Tracker<span style="color:#950740">Z</span> - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color:#950740">Privacy</a>
+        <div class="page-footer">
+            <div class="container" style="color:#f6f6f6; text-transform:none">
+                &copy; 2021 - Tracker<span style="color:#52d6f4">Z</span> - <a asp-area="" asp-controller="Home" asp-action="Privacy"><span style="color:#52d6f4">P</span>rivacy</a>
             </div>
         </div>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>

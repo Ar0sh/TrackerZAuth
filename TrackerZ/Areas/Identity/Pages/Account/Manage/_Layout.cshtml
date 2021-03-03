@@ -3,30 +3,16 @@
 }
 
 <aside class="page-sidebar">
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
-    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
-    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+    <partial name="_ManageNav" />
 </aside>
 <nav class="page-nav text-left">
-    <h3 style="text-align:center; color:white">Manage your account</h3>
+    <h3 style="text-align:center; color:white"><span style="color:#52d6f4">M</span>anage your account</h3>
 </nav>
-<main class="page-scroll">
-    <div class="container">
-        <div>
-            <hr />
-            <div class="row">
-                <div class="col-md-3">
-                    <partial name="_ManageNav" />
-                </div>
-                <div class="col-md-9">
-                    @RenderBody()
-                </div>
-            </div>
-        </div>
-
-        @section Scripts {
-            @RenderSection("Scripts", required: false)
-        }
-
+<main class="page-main">
+    <div>
+        @RenderBody()
     </div>
+    @section Scripts {
+        @RenderSection("Scripts", required: false)
+    }
 </main>

@@ -3,9 +3,9 @@
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
 <ul class="nav nav-pills flex-column">
-    <li class="nav-item"><a class="nav-link btn btn-primary @ManageNavPages.IndexNavClass(ViewContext)" id="profile" style="border-radius:0" href="/Identity/Account/Manage">Profile</a></li>
-    <li class="nav-item"><a class="nav-link btn btn-primary @ManageNavPages.EmailNavClass(ViewContext)" id="email" style="border-radius:0" href="/Identity/Account/Manage/Email">Email</a></li>
-    <li class="nav-item"><a class="nav-link btn btn-primary @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" style="border-radius:0" href="/Identity/Account/Manage/ChangePassword">Password</a></li>
-    <li class="nav-item"><a class="nav-link btn btn-primary @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" style="border-radius:0" href="/Identity/Account/Manage/TwoFactorAuthentication">Two-factor authentication</a></li>
-    <li class="nav-item"><a class="nav-link btn btn-primary @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" style="border-radius:0" href="/Identity/Account/Manage/PersonalData">Personal Data</a></li>
+    <li class="nav-item"><a class="nav-link btn btn-primary mt-3 @ManageNavPages.IndexNavClass(ViewContext)" id="profile" style="border-radius:0" href="/Identity/Account/Manage">Profile</a></li>
+    <li class="nav-item"><a class="nav-link btn btn-primary mt-3 @ManageNavPages.EmailNavClass(ViewContext)" id="email" style="border-radius:0" href="/Identity/Account/Manage/Email">Email</a></li>
+    <li class="nav-item"><a class="nav-link btn btn-primary mt-3 @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" style="border-radius:0" href="/Identity/Account/Manage/ChangePassword">Password</a></li>
+    <li class="nav-item"><a class="nav-link btn btn-primary mt-3 @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" style="border-radius:0" href="/Identity/Account/Manage/TwoFactorAuthentication">Two-Factor Authentication</a></li>
+    <li class="nav-item"><a class="nav-link btn btn-primary mt-3 @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" style="border-radius:0" href="/Identity/Account/Manage/PersonalData">Personal Data</a></li>
 </ul>

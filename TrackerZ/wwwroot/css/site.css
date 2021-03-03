@@ -3,19 +3,44 @@
   text-align: center;
   word-break: break-all;
 }*/
+
+
+/*
+    Colors:
+    #363538 - dark
+    #8d8c8a - grey
+    #f6f6f6 - light
+    #408697 - dim blue
+    #52d6f4 - bright blue
+*/
+
 a {
     color: white;
 }
 
+    a:hover {
+        color: #52d6f4;
+        text-decoration: underline;
+    }
+
+    .nav-link:hover{
+        text-decoration: underline;
+    }
+
 .btn-primary {
-    color: white;
-    background-color: #950740;
+    color: #f6f6f6;
+    background-color: #408697;
     border-color: #000000;
     border-radius: 0;
+    font-weight: bold;
     font-size: 14px;
     width: 100%;
     padding: 3px;
 }
+
+    .btn-primary:hover {
+        background-color: #52d6f4;
+    }
 
 .btn-danger {
     color: #ffd800;
@@ -23,8 +48,13 @@ a {
     border-color: #000000;
     border-radius: 0;
     font-size: 14px;
+    font-weight: bold;
     width: 100%;
     padding: 3px;
+}
+
+.btn-danger:hover {
+    background-color: #ff0000;
 }
 
 .btn-secondary {
@@ -52,7 +82,7 @@ a {
 }
 
 body {
-    background: #e4e4e4;
+    background: #8d8c8a;
     padding: 5px;
     height: 100vh;
     margin: 0;
@@ -79,7 +109,7 @@ body {
 .page-header {
     grid-column: 1/-1;
     color: white;
-    background-color: #1a1a1d;
+    background-color: #363538;
 }
 
 .page-sidebar {
@@ -87,13 +117,13 @@ body {
     grid-row: 2/4;
     height: 100%;
     color: white;
-    background-color: #1a1a1d;
+    background-color: #363538;
 }
 
 .page-nav {
     grid-column: 2/3;
     color: white;
-    background-color: #1a1a1d;
+    background-color: #363538;
 }
 
 .page-main {
@@ -101,7 +131,7 @@ body {
     height: 100%;
     display: block;
     color: white;
-    background-color: #1a1a1d;
+    background-color: #363538;
     /*overflow:scroll;
     overflow-x:hidden;*/
 }
@@ -112,11 +142,12 @@ body {
     overflow: scroll;
     overflow-x: hidden;
     color: white;
-    background-color: #1a1a1d;
+    background-color: #363538;
 }
 
 .page-footer {
     grid-column: 1/-1;
+    background-color: #363538;
 }
 
 h4 {

@@ -19,43 +19,43 @@
         <a class="btn btn-disabled m-1 mt-3">Table</a>
         <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
     </aside>
-    <nav class="page-nav text-left">
-        <h3 style="text-align:center; color:white">TrackerZ Table</h3>
+    <nav class="page-nav text-left" style="height: 0; padding: 0">
+        @*<h3 style="text-align:center; color:white">TrackerZ Table</h3>*@
     </nav>
-    <main class="page-scroll">
+    <main class="page-scroll" style="padding-bottom: 0">
         <div class="row justify-content-center">
             <div class="col-auto">
                 <table class="table table-bordered table-responsive table-condensed
                        table-sm table-responsive-data2" id="dtBasicExample" style="color:white">
                     <thead>
-                        <tr style="border:1px; border-style:solid; border-color:white; background:#6f2232">
+                        <tr style="border:1px; border-style:solid; border-color:#f6f6f6; background:#8d8c8a">
                             <th scope="col">
-                                Title
+                                <span style="color:#52d6f4">T</span>itle
                             </th>
                             <th scope="col" class="d-none d-sm-table-cell" style="width: 30%">
-                                Summary
+                                <span style="color:#52d6f4">S</span>ummary
                             </th>
                             <th scope="col">
-                                Category
+                                <span style="color:#52d6f4">C</span>ategory
                             </th>
                             <th scope="col">
-                                Status
+                                <span style="color:#52d6f4">S</span>tatus
                             </th>
                             <th scope="col" class="d-none d-md-table-cell">
-                                Added
+                                <span style="color:#52d6f4">A</span>dded
                             </th>
                             <th scope="col" class="d-none d-lg-table-cell">
-                                Closed
+                                <span style="color:#52d6f4">C</span>losed
                             </th>
                             <th scope="col">
-                                Options
+                                <span style="color:#52d6f4">O</span>ptions
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var bugs in Model.Bugs)
                         {
-                        <tr style="@(count % 2 == 0 ? "background:#c3073f" : "background:#6f2232")">
+                        <tr style="@(count % 2 == 0 ? "background:#363538" : "background:#8d8c8a")">
                             <td scope="row" style="vertical-align:middle">
                                 @Html.DisplayFor(modelItem => bugs.Title)
                             </td>
@@ -76,7 +76,7 @@
                             else
                             {
                                 <td scope="row" class="font-weight-light" style="vertical-align:middle">
-                                    <div style="color:green; font-weight:bold; text-shadow: 2px 2px #000000">
+                                    <div style="color:#86c232; font-weight:bold; text-shadow: 2px 2px #000000">
                                         @Html.DisplayFor(modelItem => bugs.Status)
                                     </div>
                                 </td>
