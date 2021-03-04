@@ -1,0 +1,5 @@
+﻿@using TrackerZ.Views.Home
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3 @ManageNavMenu.IndexNavClass(ViewContext)">Home</a>
+<a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3 @ManageNavMenu.TableNavClass(ViewContext)">Table</a>
+<a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3 @ManageNavMenu.NewNavClass(ViewContext)">New Incident</a>
+<a asp-controller="Home" asp-action="Category" class="btn btn-primary m-1 mt-3 @ManageNavMenu.CategoryNavClass(ViewContext)">Category</a>

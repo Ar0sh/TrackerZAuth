@@ -1,0 +1,68 @@
+﻿@using TrackerZ.Views.Home
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["ActivePage"] = ManageNavMenu.Category;
+}
+@model BugsViewModel
+
+<script type="text/javascript">
+    function validate() {
+        var goon = true;
+        var text = document.getElementById('idCategory');
+        for (var i = 0; i < document.getElementById('idSelect').length; i++) {
+            if (document.getElementById('idSelect')[i].childNodes[0].nodeValue === text.value) {
+                goon = false;
+            }
+        }
+        if (text.value.length > 14)
+            goon = false;
+        else if (text.value.length < 1) {
+            text.placeholder = 'Input Required!';
+            goon = false;
+        }
+        if (!goon) {
+            text.style.borderColor = 'red';
+            text.style.borderWidth = '2px';
+        }
+        return goon;
+    }
+</script>
+<aside class="page-sidebar">
+    <partial name="_ManageNavMenu" />
+</aside>
+<nav class="page-nav text-left">
+    <h3 style="text-align:center; color:white"><span style="color:#52d6f4">C</span>ategory</h3>
+</nav>
+<main class="page-main">
+    <div class="text-center">
+        <form method="post" asp-action="AddCategory" onsubmit="return validate()">
+            <div>
+                <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 10px">
+                    <h4 style="grid-column-start: 1; grid-column-end: 2">
+                        <span style="color:#52d6f4">E</span>xisting
+                    </h4>
+                    <div style="grid-column-start: 3; grid-column-end: 4">
+                        <div style="float:left; font-size: larger; margin-top:2px">
+                            <select name="catlist" id="idSelect">
+                                @foreach (var category in Model.BaseCategory)
+                                {
+                                    <option value="@category.CatName">@category.CatName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <h4 style="grid-column-start: 1; grid-column-end: 2">
+                        <span style="color:#52d6f4">N</span>ew
+                    </h4>
+                    <div style="grid-column-start: 3; grid-column-end: 4">
+                        <textarea type="text" class="text-sm-left textarea-noresize" name="category"
+                                  id="idCategory"></textarea>
+                    </div>
+                    <div style="grid-column-start: 1; grid-column-end: 5">
+                        <button type="submit" class="btn btn-primary m-1" style="width: 100px">Add</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

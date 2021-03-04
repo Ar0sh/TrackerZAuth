@@ -46,9 +46,7 @@
 </script>
 
 <aside class="page-sidebar">
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
-    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
-    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+    <partial name="_ManageNavMenu" />
 </aside>
 <nav class="page-nav text-left">
     <h3 style="text-align:center; color:white">Edit "@bug.Title"</h3>
@@ -72,7 +70,7 @@
                         <span style="color:#52d6f4">C</span>ategory
                     </h4>
                     <div style="grid-column-start: 3; grid-column-end: 4">
-                        <div style="float:left; padding:5px">@Html.DropDownListFor(model => CatIdNr, Model.BaseCatSelectList)</div>
+                        <div style="float:left; font-size:larger; margin-top:2px">@Html.DropDownListFor(model => CatIdNr, Model.BaseCatSelectList)</div>
                     </div>
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
                         <span style="color:#52d6f4">S</span>ummary
@@ -89,7 +87,7 @@
                         <span style="color:#52d6f4">S</span>tatus
                     </h4>
                     <div style="grid-column-start: 3; grid-column-end: 4">
-                        <div style="float:left; padding:5px">@Html.DropDownListFor(model => model.StatusIndex, Model.StatusOC)</div>
+                        <div style="float:left;  font-size:larger; margin-top:2px">@Html.DropDownListFor(model => model.StatusIndex, Model.StatusOC)</div>
                     </div>
                     <div style="grid-column-start: 1; grid-column-end: 5">
                         <button type="submit" class="btn btn-primary m-1" style="width: 100px">Save</button>

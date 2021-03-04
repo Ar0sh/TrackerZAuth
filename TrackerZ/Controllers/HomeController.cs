@@ -14,7 +14,7 @@ namespace TrackerZ.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-       private readonly IBugsRepository _iBugsRepository;
+        private readonly IBugsRepository _iBugsRepository;
         public HomeController(IBugsRepository bugsRepository)
         {
             _iBugsRepository = bugsRepository;
@@ -77,6 +77,21 @@ namespace TrackerZ.Controllers
                 Bugs = (List<Bugs>)_iBugsRepository.GetAllBugs()
             };
             return View(bugsViewModel);
+        }
+
+        public IActionResult Category()
+        {
+            BugsViewModel bugsViewModel = new BugsViewModel()
+            {
+                BaseCategory = (List<Category>)_iBugsRepository.GetBaseCategory()
+            };
+            return View(bugsViewModel);
+        }
+
+        public ActionResult AddCategory(string category)
+        {
+            EditCategory.Add(category);
+            return RedirectToAction("Category");
         }
 
         public IActionResult Privacy()

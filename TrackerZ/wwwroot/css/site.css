@@ -20,13 +20,13 @@ a {
 
     a:hover {
         color: #52d6f4;
-        text-decoration: underline;
+        text-decoration: none;
+        text-shadow: 2px 2px #000000;
     }
-
-    .nav-link:hover{
-        text-decoration: underline;
-    }
-
+span {
+    color: #52d6f4;
+    text-shadow: 2px 2px #000000;
+}
 .btn-primary {
     color: #f6f6f6;
     background-color: #408697;
@@ -36,10 +36,28 @@ a {
     font-size: 14px;
     width: 100%;
     padding: 3px;
+    text-shadow: none;
 }
 
     .btn-primary:hover {
         background-color: #52d6f4;
+        text-shadow: none;
+    }
+
+    .btn-primary:focus {
+        background-color: #408697 !important;
+        box-shadow: none !important;
+        text-shadow: none;
+    }
+
+    .btn-primary:active {
+        background-color: #408697 !important;
+        box-shadow: none !important;
+        text-shadow: none;
+    }
+    .btn-primary.active {
+        background-color: #52d6f4 !important;
+        text-shadow: none;
     }
 
 .btn-danger {

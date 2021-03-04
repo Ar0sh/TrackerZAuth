@@ -1,5 +1,7 @@
-﻿@{
+﻿@using TrackerZ.Views.Home
+@{
     ViewData["Title"] = "Home Page";
+    ViewData["ActivePage"] = ManageNavMenu.Index;
 }
 @model BugsViewModel
 @{
@@ -8,9 +10,7 @@
 }
 
 <aside class="page-sidebar">
-    <a class="btn btn-disabled m-1 mt-3">Home</a>
-    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
-    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+    <partial name="_ManageNavMenu" />
 </aside>
 <nav class="page-nav text-left">
     <h3 style="text-align:center; color:white"><span style="color:#52d6f4">O</span>verview</h3>

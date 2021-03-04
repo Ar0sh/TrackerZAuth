@@ -2,13 +2,11 @@
     ViewData["Title"] = "Privacy Policy";
 }
 <aside class="page-sidebar">
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1 mt-3">Home</a>
-    <a asp-controller="Home" asp-action="Table" class="btn btn-primary m-1 mt-3">Table</a>
-    <a asp-controller="Home" asp-action="New" class="btn btn-primary m-1 mt-3">New Incident</a>
+    <partial name="_ManageNavMenu" />
 </aside>
 <nav class="page-nav text-left">
-    <h1 style="text-align:center; color:white; text-transform:none">@ViewData["Title"]</h1>
+    <h1 style="text-align:center; color:white; text-transform:none"><span style="color:#52d6f4">P</span>rivacy Policy</h1>
 </nav>
 <main class="page-main">
-    <p style="color:white; text-transform:none">Copyright &copy; @DateTime.Now.Year Frode Ulriksen</p>
+    <p style="color:white; text-transform:none"><span style="color:#52d6f4">C</span>opyright &copy; @DateTime.Now.Year Frode Ulriksen</p>
 </main>
