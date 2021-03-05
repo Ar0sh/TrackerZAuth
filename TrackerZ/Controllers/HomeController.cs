@@ -79,21 +79,6 @@ namespace TrackerZ.Controllers
             return View(bugsViewModel);
         }
 
-        public IActionResult Category()
-        {
-            BugsViewModel bugsViewModel = new BugsViewModel()
-            {
-                BaseCategory = (List<Category>)_iBugsRepository.GetBaseCategory()
-            };
-            return View(bugsViewModel);
-        }
-
-        public ActionResult AddCategory(string category)
-        {
-            EditCategory.Add(category);
-            return RedirectToAction("Category");
-        }
-
         public IActionResult Privacy()
         {
             return View();

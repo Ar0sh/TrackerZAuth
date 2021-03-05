@@ -46,6 +46,7 @@ namespace TrackerZ
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers(options => options.EnableEndpointRouting = false);
             services.AddSingleton<IBugsRepository, BugData>();
+            services.AddSingleton<ICategoryRepository, EditCategory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

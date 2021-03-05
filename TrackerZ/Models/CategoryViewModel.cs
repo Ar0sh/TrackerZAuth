@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace TrackerZ.Models
 {
-    public interface ICategoryRepository
+    public class CategoryViewModel
     {
-        IEnumerable<Category> GetBaseCategory();
+        public List<Category> BaseCategory { get; set; }
     }
 }
