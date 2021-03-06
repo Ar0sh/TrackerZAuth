@@ -8,10 +8,20 @@
 
 @if (showBanner)
 {
-    <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" style="z-index:2" role="alert">
-        Accept GDPR rules? <a asp-controller="Home" asp-action="Privacy">Learn More</a>.
-        <button type="button" class="accept-policy close" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            <span aria-hidden="true">Accept</span>
+    <div id="cookieConsent" 
+         style="font-weight:bold; position:absolute; background-color:#52d6f4; margin: 0 auto; padding: 0.55rem; width:90%; text-shadow: 2px 2px #000000" 
+         role="alert">
+            Please review our 
+            <a asp-controller="Home" asp-action="Privacy">
+                <span>C</span>ookie <span>P</span>olicy
+            </a> and click accept to continue.
+        <button type="button" 
+                class="btn btn-primary"
+                style="width: 100px"
+                data-dismiss="alert" 
+                aria-label="Close" 
+                data-cookie-string="@cookieString">
+            <span aria-hidden="true" style="color:white">Accept</span>
         </button>
     </div>
     <script>
@@ -19,6 +29,8 @@
             var button = document.querySelector("#cookieConsent button[data-cookie-string]");
             button.addEventListener("click", function (event) {
                 document.cookie = button.dataset.cookieString;
+                document.getElementById("cookieConsent").style.visibility = "hidden";
+                //window.location.reload();
             }, false);
         })();
     </script>

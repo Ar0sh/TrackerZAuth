@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - TrackerZ</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Network.svg" />
 </head>
 
 @*
@@ -17,17 +18,17 @@
     #52d6f4 - bright blue
 *@
 <body>
-    <partial name="_CookieConsentPartial" />
     <div class="page-wrap">
         <header class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow page-header"
-                style="text-transform:none">
+                style="text-transform:none; justify-content:center">
+            <partial name="_CookieConsentPartial" />
             <div class="container">
                 <a class="navbar-brand" style="color:#f6f6f6" asp-area="" asp-controller="Home" asp-action="Index">Tracker<span>Z</span></a>
                 <button class="navbar-toggler navbar-dark" style="background-color:#52d6f4" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><span>H</span>ome</a>
@@ -40,7 +41,7 @@
                 </div>
             </div>
         </header>
-        @RenderBody() 
+        @RenderBody()
         <div class="page-footer">
             <div class="container" style="color:#f6f6f6; text-transform:none">
                 &copy; 2021 - Tracker<span>Z</span> - <a asp-area="" asp-controller="Home" asp-action="Privacy"><span>P</span>rivacy</a>
