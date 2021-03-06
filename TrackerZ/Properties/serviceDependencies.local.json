@@ -3,10 +3,9 @@
     "secrets1": {
       "type": "secrets.user"
     },
-    "mssql1": {
-      "resourceId": null,
-      "type": "mssql.local",
-      "connectionId": "DefaultConnection",
+    "mssql2": {
+      "type": "mssql.onprem",
+      "connectionId": "DebianNASSql",
       "secretStore": "LocalSecretsFile"
     }
   }

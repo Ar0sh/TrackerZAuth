@@ -16,7 +16,8 @@
         }
         if (text.value.length > 14)
             goon = false;
-        else if (text.value.length < 1) {
+        else if (isEmptyOrSpaces(text.value)) {
+            text.value = '';
             text.placeholder = 'Input Required!';
             goon = false;
         }
@@ -26,6 +27,14 @@
         }
         return goon;
     }
+    function isEmptyOrSpaces(str) {
+        return str === null || str.match(/^ *$/) !== null;
+    }
+    $(document).ready(function () {
+        $('select').change(function () {
+            $('a').attr('asp-route-id', $(this).children('option:selected').val());
+        })
+    })
 </script>
 <aside class="page-sidebar">
     <partial name="_ManageNavMenu" />
@@ -37,7 +46,7 @@
     <div class="text-center">
         <form method="post" asp-action="AddCategory" onsubmit="return validate()">
             <div>
-                <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 10px">
+                <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 100px 10px">
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
                         <span style="color:#52d6f4">E</span>xisting
                     </h4>
@@ -51,14 +60,17 @@
                             </select>
                         </div>
                     </div>
+                    <div style="grid-column-start: 4; grid-column-end: 5">
+                        <a asp-controller="Category" asp-action="Remove" asp-route-id="idSelect" class="btn btn-danger m-1" style="width: 100px; text-transform:none">Delete</a>
+                    </div>
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
                         <span style="color:#52d6f4">N</span>ew
                     </h4>
-                    <div style="grid-column-start: 3; grid-column-end: 4">
+                    <div style="grid-column-start: 3; grid-column-end: 5">
                         <textarea type="text" class="text-sm-left textarea-noresize" name="category"
                                   id="idCategory"></textarea>
                     </div>
-                    <div style="grid-column-start: 1; grid-column-end: 5">
+                    <div style="grid-column-start: 1; grid-column-end: 6">
                         <button type="submit" class="btn btn-primary m-1" style="width: 100px">Add</button>
                     </div>
                 </div>

@@ -19,7 +19,6 @@ namespace TrackerZ.Controllers
         {
             _iBugsRepository = bugsRepository;
         }
-        [HttpPost]
         public ActionResult SubmitBug(string title, string text, string status, string category)
         {
             BugData.SaveData(title, text, status, category);

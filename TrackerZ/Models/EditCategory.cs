@@ -15,8 +15,7 @@ namespace TrackerZ.Models
         private List<SelectListItem> _baseCat;
         private static SqlConnection GetConnection()
         {
-            string connection = ConnectMySql.ConnString("BugTracker", "buguser", "123456");
-
+            string connection = ConnectMsSql.ConnString();
             return new SqlConnection(connection);
         }
         public static void Add(string category)
@@ -28,7 +27,7 @@ namespace TrackerZ.Models
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Category", SqlDbType.NVarChar)
             {
-                Value = category
+                Value = category.Trim()
             };
             cmd.Parameters.Add(param[0]);
             cmd.ExecuteNonQuery();
@@ -62,6 +61,11 @@ namespace TrackerZ.Models
             {
 
             }
+        }
+
+        public static void Remove(string category)
+        {
+
         }
 
         public IEnumerable<Category> GetBaseCategory()

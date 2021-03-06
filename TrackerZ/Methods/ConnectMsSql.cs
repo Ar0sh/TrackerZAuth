@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace TrackerZ.Methods
 {
-    internal class ConnectMySql
+    internal class ConnectMsSql
     {
-        protected internal static string ConnString(string database, string user, string passwd)
+        protected internal static string ConnString()
         {
-            string connString = "Server=192.168.1.161; database=" + database + "; UID=" + user + "; password=" + passwd;
+            string connString = "Server=192.168.1.161; database=TrackerZ; UID=buguser; password=123456";
             return connString;
         }
     }

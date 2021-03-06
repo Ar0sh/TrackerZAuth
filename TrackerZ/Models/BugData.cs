@@ -6,6 +6,8 @@ using System.Data;
 using System.Data.SqlClient;
 using TrackerZ.Methods;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using TrackerZ.Data;
 
 namespace TrackerZ.Models
 {
@@ -18,12 +20,10 @@ namespace TrackerZ.Models
         private static List<SelectListItem> _statusCat;
         private List<SelectListItem> _baseCat;
         private int _bugCounts;
-        //private int _index;
 
         private static SqlConnection GetConnection()
         {
-            string connection = ConnectMySql.ConnString("BugTracker", "buguser", "123456");
-            
+            string connection = ConnectMsSql.ConnString();
             return new SqlConnection(connection);
         }
         public void GetEditBug(Guid id)
@@ -31,10 +31,10 @@ namespace TrackerZ.Models
             _bug = new Bugs();
             using SqlConnection conn = GetConnection();
             conn.Open();
-            //SqlCommand cmd = new SqlCommand($"select * from BugList where id = '{id}'", conn);
-            SqlCommand cmd = new SqlCommand($"select BugList.id, BugList.title, BugList.text, BugList.status, BugList.added, " +
-                $"BugList.closed, BugList.catid, BaseCategory.id as catidnr, BaseCategory.cat_name from BugList join BaseCategory on " +
-                $"BugList.catid = BaseCategory.catid where BugList.id = '{id}'", conn);
+            //SqlCommand cmd = new SqlCommand($"select * from IncidentList where id = '{id}'", conn);
+            SqlCommand cmd = new SqlCommand($"select IncidentList.id, IncidentList.title, IncidentList.text, IncidentList.status, IncidentList.added, " +
+                $"IncidentList.closed, IncidentList.catid, BaseCategory.id as catidnr, BaseCategory.cat_name from IncidentList join BaseCategory on " +
+                $"IncidentList.catid = BaseCategory.catid where IncidentList.id = '{id}'", conn);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -75,17 +75,17 @@ namespace TrackerZ.Models
             SqlCommand cmd;
             if (statusToClosed)
             {
-                cmd = new SqlCommand($"update BugList set title = @Title, text = @Text, status = @Status, " +
+                cmd = new SqlCommand($"update IncidentList set title = @Title, text = @Text, status = @Status, " +
                     $"closed = CURRENT_TIMESTAMP, catid = @Category where id = '{id}'", conn);
             }
             else if(statusToOpen)
             {
-                cmd = new SqlCommand($"update BugList set title = @Title, text = @Text, status = @Status, " +
+                cmd = new SqlCommand($"update IncidentList set title = @Title, text = @Text, status = @Status, " +
                     $"closed = NULL, catid = @Category where id = '{id}'", conn);
             }
             else
             {
-                cmd = new SqlCommand($"update BugList set title = @Title, text = @Text, status = @Status, " +
+                cmd = new SqlCommand($"update IncidentList set title = @Title, text = @Text, status = @Status, " +
                     $"catid = @Category where id = '{id}'", conn);
             }
             SqlParameter[] param = new SqlParameter[4];
@@ -119,8 +119,8 @@ namespace TrackerZ.Models
             using SqlConnection conn = GetConnection();
             conn.Open();
             SqlCommand cmd = status == "Closed" ? 
-                new SqlCommand($"insert into BugList(title, text, status, added, closed, catid) VALUES (@Title, @Text, @Status, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @Category)", conn) :
-                new SqlCommand($"insert into BugList(title, text, status, added, catid) VALUES (@Title, @Text, @Status, CURRENT_TIMESTAMP, @Category)", conn);
+                new SqlCommand($"insert into IncidentList(title, text, status, added, closed, catid) VALUES (@Title, @Text, @Status, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @Category)", conn) :
+                new SqlCommand($"insert into IncidentList(title, text, status, added, catid) VALUES (@Title, @Text, @Status, CURRENT_TIMESTAMP, @Category)", conn);
             SqlParameter[] param = new SqlParameter[4];
             param[0] = new SqlParameter("@Title", SqlDbType.NVarChar, 50)
             {
@@ -149,7 +149,7 @@ namespace TrackerZ.Models
         {
             using SqlConnection conn = GetConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand($"delete from BugList where id = '{id}'", conn);
+            SqlCommand cmd = new SqlCommand($"delete from IncidentList where id = '{id}'", conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -157,7 +157,7 @@ namespace TrackerZ.Models
         {
             using SqlConnection conn = GetConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand($"update BugList set status = 'Closed', closed = CURRENT_TIMESTAMP where id = '{id}'", conn);
+            SqlCommand cmd = new SqlCommand($"update IncidentList set status = 'Closed', closed = CURRENT_TIMESTAMP where id = '{id}'", conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -168,10 +168,10 @@ namespace TrackerZ.Models
             {
                 using SqlConnection conn = GetConnection();
                 conn.Open();
-                //SqlCommand cmd = new SqlCommand("select * from BugList order by added desc", conn);
-                SqlCommand cmd = new SqlCommand("select BugList.id, BugList.title, BugList.text, BugList.status, " +
-                    "BugList.added, BugList.closed, BugList.catid, BaseCategory.id as catidnr, BaseCategory.cat_name " +
-                    "from BugList join BaseCategory on BugList.catid = BaseCategory.catid order by added desc", conn);
+                //SqlCommand cmd = new SqlCommand("select * from IncidentList order by added desc", conn);
+                SqlCommand cmd = new SqlCommand("select IncidentList.id, IncidentList.title, IncidentList.text, IncidentList.status, " +
+                    "IncidentList.added, IncidentList.closed, IncidentList.catid, BaseCategory.id as catidnr, BaseCategory.cat_name " +
+                    "from IncidentList join BaseCategory on IncidentList.catid = BaseCategory.catid order by added desc", conn);
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -205,9 +205,9 @@ namespace TrackerZ.Models
                 using SqlConnection conn = GetConnection();
                 conn.Open();
                 if(all)
-                    cmd = new SqlCommand("select COUNT(*) from BugList", conn);
+                    cmd = new SqlCommand("select COUNT(*) from IncidentList", conn);
                 else
-                    cmd = new SqlCommand("select COUNT(*) from BugList where status = 'closed'", conn);
+                    cmd = new SqlCommand("select COUNT(*) from IncidentList where status = 'closed'", conn);
                 _bugCounts = (int)cmd.ExecuteScalar();
                 conn.Close();
             }
