@@ -21,25 +21,34 @@ namespace TrackerZ.Models
         public static void Add(string category)
         {
             using SqlConnection conn = GetConnection();
-            conn.Open();
-            SqlCommand cmd =
-                new SqlCommand($"insert into BaseCategory(cat_name) VALUES (@Category)", conn);
-            SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@Category", SqlDbType.NVarChar)
+            try
             {
-                Value = category.Trim()
-            };
-            cmd.Parameters.Add(param[0]);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand($"insert into BaseCategory(cat_name) VALUES (@Category)", conn);
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@Category", SqlDbType.NVarChar)
+                {
+                    Value = category.Trim()
+                };
+                cmd.Parameters.Add(param[0]);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
         public void GetBaseCat()
         {
             _category = new List<Category>();
             _baseCat = new List<SelectListItem>();
+            using SqlConnection conn = GetConnection();
             try
             {
-                using SqlConnection conn = GetConnection();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("select * from BaseCategory order by cat_name asc", conn);
                 using (var reader = cmd.ExecuteReader())
@@ -55,17 +64,43 @@ namespace TrackerZ.Models
                         _baseCat.Add(new SelectListItem { Value = reader[0].ToString(), Text = reader[2].ToString() });
                     };
                 }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void Remove(string catid)
+        {
+            using SqlConnection conn = GetConnection();
+            try
+            {
+                conn.Open();
+                SqlCommand check = new SqlCommand($"update IncidentList set catid = 'BC0000000022' where catid = '{catid}'", conn);
+                check.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand("delete from BaseCategory where catid = @CatID", conn);
+                SqlParameter[] param = new SqlParameter[1];
+                param[0] = new SqlParameter("@CatID", SqlDbType.NVarChar)
+                {
+                    Value = catid.Trim()
+                };
+                cmd.Parameters.Add(param[0]);
+                cmd.ExecuteNonQuery();
                 conn.Close();
             }
             catch
             {
 
             }
-        }
-
-        public static void Remove(string category)
-        {
-
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public IEnumerable<Category> GetBaseCategory()

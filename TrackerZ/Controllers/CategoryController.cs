@@ -29,9 +29,9 @@ namespace TrackerZ.Controllers
             return View(categoryViewModel);
         }
 
-        public ActionResult Remove(string catlist)
+        public ActionResult Remove(string catid)
         {
-            EditCategory.Remove(catlist);
+            EditCategory.Remove(catid);
             return RedirectToAction("Category");
         }
 
