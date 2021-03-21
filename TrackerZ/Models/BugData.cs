@@ -216,6 +216,55 @@ namespace TrackerZ.Models
                 _bugCounts = 0;
             }
         }
+        public void GetBugLatest(bool open)
+        {
+            _bug = new Bugs();
+            string status, added;
+
+            if(open == true)
+            {
+                status = "Open";
+                added = "added";
+            }
+            else
+            {
+                status = "Closed";
+                added = "closed";
+            }
+            try
+            {
+                using SqlConnection conn = GetConnection();
+                conn.Open();
+                //SqlCommand cmd = new SqlCommand("select * from IncidentList order by added desc", conn);
+                SqlCommand cmd = new SqlCommand("select Top(1) IncidentList.id, IncidentList.title, IncidentList.text, IncidentList.status, " +
+                    "IncidentList.added, IncidentList.closed, IncidentList.catid, BaseCategory.id as catidnr, BaseCategory.cat_name " +
+                    "from IncidentList join BaseCategory on IncidentList.catid = BaseCategory.catid where status = '" + status + "' order by " + added + " desc", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        _bug = new Bugs()
+                        {
+                            Id = (Guid)reader["id"],
+                            Title = reader["title"].ToString(),
+                            Text = reader["text"].ToString(),
+                            Status = reader["status"].ToString(),
+                            Added = Convert.ToDateTime(reader["added"].ToString()),
+                            Closed = DateTime.TryParse(reader["closed"].ToString(), out DateTime dateValue) ? Convert.ToDateTime(reader[5].ToString()) : nullableDateTime,
+                            CatId = reader["catid"].ToString(),
+                            CatIdNr = reader["catidnr"].ToString(),
+                            CatName = reader["cat_name"].ToString()
+                        };
+                    }
+                }
+                conn.Close();
+            }
+            catch
+            {
+
+            }
+
+        }
         public void GetBaseCat()
         {
             _category = new List<Category>();
@@ -284,6 +333,11 @@ namespace TrackerZ.Models
             GetBugs(all);
 
             return _bugCounts;
+        }
+        public Bugs GetLatestIncident(bool open)
+        {
+            GetBugLatest(open);
+            return _bug;
         }
     }
 }

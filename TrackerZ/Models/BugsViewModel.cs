@@ -19,5 +19,7 @@ namespace TrackerZ.Models
         public int BaseCatIndex { get; set; }
         public int BugCounter { get; set; }
         public int ClosedBugs { get; set; }
+        public Bugs LatestOpenIncident { get; set; }
+        public Bugs LatestClosedIncident { get; set; }
     }
 }

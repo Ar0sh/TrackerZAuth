@@ -14,5 +14,6 @@ namespace TrackerZ.Models
         IEnumerable<SelectListItem> GetStatusCategory();
         IEnumerable<SelectListItem> GetBaseCatList();
         int CountBugs(bool all);
+        Bugs GetLatestIncident(bool open);
     }
 }

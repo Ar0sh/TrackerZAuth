@@ -4,31 +4,48 @@
     ViewData["Title"] = "New";
     ViewData["ActivePage"] = ManageNavMenu.New;
 }
-
+<script>
+    tinymce.init({
+        selector: '#idSummary',
+        menubar: 'edit format',
+        content_style: "p { margin: 4px; }",
+        toolbar: 'bold italic underline forecolor backcolor fontselect fontsizeselect alignleft aligncenter alignright',
+        height: 300,
+        statusbar: false,
+        mobile: {
+            theme: 'mobile',
+            toolbar: ['undo', 'redo', 'bold', 'italic', 'underline', 'forecolor', 'backcolor', 'fontselect', 'fontsizeselect', 'alignleft', 'aligncenter', 'alignright']
+        }
+    });
+</script>
 <script type="text/javascript">
     function validate() {
         var goon = true;
-        if (document.getElementById('idTitle').value == '') {
-            document.getElementById('idTitle').placeholder = 'Input Required!';
-            document.getElementById('idTitle').style.borderColor = 'red';
-            document.getElementById('idTitle').style.borderWidth = '2px';
+        var titleText = document.getElementById('idTitle');
+        var summaryText = document.getElementById('idSummary');
+        if (isEmptyOrSpaces(titleText.value)) {
+            titleText.value = '';
+            titleText.placeholder = 'Input Required!';
+            titleText.style.borderColor = 'red';
+            titleText.style.borderWidth = '2px';
             goon = false;
         }
         else {
             document.getElementById('lblTitleID').innerHTML = '';
-            document.getElementById('idTitle').style.borderColor = 'none';
-            document.getElementById('idTitle').style.borderWidth = '0';
+            titleText.style.borderColor = 'none';
+            titleText.style.borderWidth = '0';
         }
-        if (document.getElementById('idSummary').value == '') {
-            document.getElementById('idSummary').placeholder = 'Input Required!';
-            document.getElementById('idSummary').style.borderColor = 'red';
-            document.getElementById('idSummary').style.borderWidth = '2px';
+        if (isEmptyOrSpaces(summaryText.value)) {
+            summaryText.value = '';
+            summaryText.placeholder = 'Input Required!';
+            summaryText.style.borderColor = 'red';
+            summaryText.style.borderWidth = '2px';
             goon = false;
         }
         else {
             document.getElementById('lblSummaryID').innerHTML = '';
-            document.getElementById('idTitle').style.borderColor = 'none';
-            document.getElementById('idTitle').style.borderWidth = '0';
+            summaryText.style.borderColor = 'none';
+            summaryText.style.borderWidth = '0';
         }
         if (goon == false) {
             return false;
@@ -36,6 +53,9 @@
         else {
             return true;
         }
+    }
+    function isEmptyOrSpaces(str) {
+        return str === null || str.match(/^ *$/) !== null;
     }
 </script>
 

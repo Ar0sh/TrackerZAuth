@@ -18,8 +18,28 @@
 <main class="page-main">
     <div class="text-center">
         <div>
-            <h4 style="color:white;text-transform:none">Number of incidents: @all</h4>
-            <h4 style="color:white;text-transform:none">Number of closed incidents: @closed</h4>
+            <p style="color:white;text-transform:none">Number of incidents: @all</p>
+            <p style="color:white;text-transform:none">Number of closed incidents: @closed</p>
+            <br />
+            <p><u>Latest Open Incident:</u></p>
+            @if (Model.LatestOpenIncident.Text != null)
+            {
+                @Html.Raw(Model.LatestOpenIncident.Text)
+            }
+            else
+            {
+                <p>No open incidents!</p>
+            }
+            <br />
+            <p><u>Latest Closed Incident:</u></p>
+            @if (Model.LatestClosedIncident.Text != null)
+            {
+                @Html.Raw(Model.LatestClosedIncident.Text)
+            }
+            else
+            {
+                <p>No closed incidents!</p>
+            }
         </div>
     </div>
 </main>

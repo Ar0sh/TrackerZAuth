@@ -23,7 +23,8 @@ a {
         text-decoration: none;
         text-shadow: 2px 2px #000000;
     }
-span {
+
+span#tracker {
     color: #52d6f4;
     text-shadow: 2px 2px #000000;
 }
@@ -108,6 +109,9 @@ body {
     text-transform: uppercase;
 }
 
+p {
+    margin: 4px;
+}
 .page-wrap {
     /*background: white;*/
     height: calc(100vh - 10px);

@@ -21,7 +21,7 @@
 <nav class="page-nav text-left" style="height: 0; padding: 0">
     @*<h3 style="text-align:center; color:white">TrackerZ Table</h3>*@
 </nav>
-<main class="page-scroll" style="padding-bottom: 0">
+<main class="page-scroll" style="padding-bottom: 0" onload="javascript:unescape()">
     <div class="row justify-content-center">
         <div class="col-auto">
             <table class="table table-bordered table-responsive table-condensed
@@ -59,7 +59,7 @@
                                 @Html.DisplayFor(modelItem => bugs.Title)
                             </td>
                             <td scope="row" class="font-weight-light d-none d-sm-table-cell" style="max-width: 300px; vertical-align:middle">
-                                @Html.DisplayFor(modelItem => bugs.Text)
+                                @Html.Raw(bugs.Text)
                             </td>
                             <td class="font-weight-light" style="vertical-align:middle">
                                 @Html.DisplayFor(modelItem => bugs.CatName)

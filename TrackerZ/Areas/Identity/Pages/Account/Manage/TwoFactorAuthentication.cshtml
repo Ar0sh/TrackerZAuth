@@ -5,7 +5,7 @@
 }
 
 @Html.Partial("_StatusMessage", Model.StatusMessage)
-<h4 class="text-center"><span style="color:#52d6f4">T</span>wo-factor authentication (2FA)</h4>
+<h4 class="text-center"><span id="tracker">T</span>wo-factor authentication (2FA)</h4>
 @if (Model.Is2faEnabled)
 {
     if (Model.RecoveryCodesLeft == 0)
@@ -39,7 +39,7 @@
     <a asp-page="./Disable2fa" class="btn btn-primary" style="width:250px; margin: 0 auto">Disable 2FA</a>
     <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary" style="width:250px; margin: 0 auto">Reset recovery codes</a>
 }
-<h5 class="text-light" style="margin-top:5px"><span style="color:#52d6f4">A</span>uthenticator app</h5>
+<h5 class="text-light" style="margin-top:5px"><span id="tracker">A</span>uthenticator app</h5>
 @if (!Model.HasAuthenticator)
 {
     <a id="enable-authenticator" asp-page="./EnableAuthenticator" style="width:250px; margin: 0 auto" class="btn btn-primary text-light">Add authenticator app</a>

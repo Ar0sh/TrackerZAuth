@@ -65,7 +65,9 @@ namespace TrackerZ.Controllers
             BugsViewModel bugsViewModel = new BugsViewModel()
             {
                 BugCounter = _iBugsRepository.CountBugs(true),
-                ClosedBugs = _iBugsRepository.CountBugs(false)
+                ClosedBugs = _iBugsRepository.CountBugs(false),
+                LatestOpenIncident = _iBugsRepository.GetLatestIncident(true),
+                LatestClosedIncident = _iBugsRepository.GetLatestIncident(false)
             };
             return View(bugsViewModel);
         }
