@@ -305,9 +305,30 @@ details p {
             color: #52d6f4;
         }
 
+.hamburger-icon {
+    margin: 0;
+    padding: 19px 16px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+    .hamburger-icon span {
+        width: 40px;
+        background-color: #000;
+        height: 5px;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+        .hamburger-icon span:last-child {
+            margin-bottom: 0px;
+        }
+
 @media (max-width: 600px) {
     html {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     h3 {

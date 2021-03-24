@@ -50,33 +50,12 @@
                     <button id="mySidepaneldiv" class="btn btn-primary" onclick="openNav()" style="width:58px; height:44px; border-radius:5px; font-size:26px; text-align:center">&#9776;</button>
                 </div>
                 <a class="navbar-brand" style="color:#f6f6f6" asp-area="" asp-controller="Home" asp-action="Index">Tracker<span id="tracker">Z</span></a>
-                <!--<div style="display: flex; justify-content: flex-end; align-items: center">
-                    <button class="btn btn-primary navbar-toggleable-sm navbar-toggler"
-                            style="width: 58px; height: 44px; border-radius: 5px; font-size: 26px;
-                            text-align: center" type="button" data-toggle="collapse"
-                            data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        &#9776;-->
-                        @*<span class="navbar-toggler-icon"></span>*@
-                    <!--</button>
-                </div>-->
                 <div style="display: flex; justify-content: flex-start; align-items: center">
                     <button id="myHeaderpaneldiv" class="btn btn-primary" onclick="openHeader()" style="width:58px; height:44px; border-radius:5px; font-size:26px; text-align:center">&#9776;</button>
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <partial name="_ManageHeaderMenu" />
                 </div>
-                @*<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><span id="tracker">H</span>ome</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy"><span id="tracker">P</span>rivacy</a>
-                        </li>
-                        <partial name="_LoginPartial" />
-                    </ul>
-                </div>*@
             </div>
         </header>
         @RenderBody()
