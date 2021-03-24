@@ -21,25 +21,52 @@
 *@
 <body onload="unescape()">
     <script type="text/javascript">
-        function unescape() {
-            var x = document.getElementsByClassName('q');
-            for (var i = 0; i < x.length; i++) {
-                document.getElementById(x[i].id)
-                    = document.getElementById(x[i].id).replace("Hello", "Hi");
-            }
+        /* Set the width of the sidebar to 250px (show it) */
+        function openNav() {
+            document.getElementById("mySidepanel").style.width = "100%";
+        }
+
+        /* Set the width of the sidebar to 0 (hide it) */
+        function closeNav() {
+            document.getElementById("mySidepanel").style.width = "0";
+        }
+        function openHeader() {
+            document.getElementById("myHeaderpanel").style.width = "100%";
+        }
+
+        /* Set the width of the sidebar to 0 (hide it) */
+        function closeHeader() {
+            document.getElementById("myHeaderpanel").style.width = "0";
         }
     </script>
     <div class="page-wrap">
         <header class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow page-header"
                 style="text-transform:none; justify-content:center">
             <partial name="_CookieConsentPartial" />
+            <partial name="_ManageNavPanel" />
+            <partial name="_ManageHeaderPanel" />
             <div class="container">
+                <div style="display: flex; justify-content: flex-start; align-items: center">
+                    <button id="mySidepaneldiv" class="btn btn-primary" onclick="openNav()" style="width:58px; height:44px; border-radius:5px; font-size:26px; text-align:center">&#9776;</button>
+                </div>
                 <a class="navbar-brand" style="color:#f6f6f6" asp-area="" asp-controller="Home" asp-action="Index">Tracker<span id="tracker">Z</span></a>
-                <button class="navbar-toggler navbar-dark" style="background-color:#408697" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <!--<div style="display: flex; justify-content: flex-end; align-items: center">
+                    <button class="btn btn-primary navbar-toggleable-sm navbar-toggler"
+                            style="width: 58px; height: 44px; border-radius: 5px; font-size: 26px;
+                            text-align: center" type="button" data-toggle="collapse"
+                            data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        &#9776;-->
+                        @*<span class="navbar-toggler-icon"></span>*@
+                    <!--</button>
+                </div>-->
+                <div style="display: flex; justify-content: flex-start; align-items: center">
+                    <button id="myHeaderpaneldiv" class="btn btn-primary" onclick="openHeader()" style="width:58px; height:44px; border-radius:5px; font-size:26px; text-align:center">&#9776;</button>
+                </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <partial name="_ManageHeaderMenu" />
+                </div>
+                @*<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><span id="tracker">H</span>ome</a>
@@ -49,7 +76,7 @@
                         </li>
                         <partial name="_LoginPartial" />
                     </ul>
-                </div>
+                </div>*@
             </div>
         </header>
         @RenderBody()

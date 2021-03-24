@@ -46,8 +46,8 @@
                         <span style="color:#52d6f4">E</span>xisting
                     </h4>
                     <div style="grid-column-start: 3; grid-column-end: 4">
-                        <div style="float:left; font-size: larger; margin-top:2px">
-                            <select name="catid">
+                        <div style="float:left; font-size: larger">
+                            <select name="catid" style="vertical-align:middle; margin-top: 1px">
                                 @foreach (var category in Model.BaseCategory)
                                 {
                                     if (category.CatName != "None")
@@ -59,13 +59,13 @@
                         </div>
                     </div>
                     <div style="grid-column-start: 4; grid-column-end: 5">
-                        <button type="submit" class="btn btn-danger m-1" style="width: 100px; text-transform:none">Delete</button>
+                        <button type="submit" class="btn btn-danger" style="width: 100px; text-transform:none; margin-top: 2px">Delete</button>
                     </div>
                 </div>
             </div>
         </form>
         <form method="post" asp-action="AddCategory" onsubmit="return validate()">
-            <div>
+            <div style="margin-top: 2px">
                 <div style="display:grid; grid-template-rows:auto; grid-template-columns: 100px 50px auto 100px 10px">
                     <h4 style="grid-column-start: 1; grid-column-end: 2">
                         <span style="color:#52d6f4">N</span>ew

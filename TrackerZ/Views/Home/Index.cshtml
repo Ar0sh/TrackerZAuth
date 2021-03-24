@@ -21,7 +21,7 @@
             <p style="color:white;text-transform:none">Number of incidents: @all</p>
             <p style="color:white;text-transform:none">Number of closed incidents: @closed</p>
             <br />
-            <p><u>Latest Open Incident:</u></p>
+            <p><u>Latest <span style="color:red; font-weight:bold">Open</span> Incident:</u></p>
             @if (Model.LatestOpenIncident.Text != null)
             {
                 @Html.Raw(Model.LatestOpenIncident.Text)
@@ -31,7 +31,7 @@
                 <p>No open incidents!</p>
             }
             <br />
-            <p><u>Latest Closed Incident:</u></p>
+            <p><u>Latest <span style="color:#86c232; font-weight:bold">Closed</span> Incident:</u></p>
             @if (Model.LatestClosedIncident.Text != null)
             {
                 @Html.Raw(Model.LatestClosedIncident.Text)

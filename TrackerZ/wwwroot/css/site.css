@@ -219,6 +219,92 @@ details p {
     text-align: left;
 }
 
+/* The sidepanel menu */
+#mySidepanel {
+    display: none;
+}
+#mySidepaneldiv {
+    display: none;
+}
+#myHeaderpaneldiv {
+    display: none;
+}
+.sidepanel {
+    height: 100%; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Stay on top */
+    backdrop-filter: blur(8px);
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 80px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+    /* The sidepanel links */
+    .sidepanel a {
+        /*padding: 8px 8px 8px 32px;*/
+        margin-left: 6px;
+        max-width: 200px;
+        /*text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;*/
+    }
+
+        /* When you mouse over the navigation links, change their color */
+        /*.sidepanel a:hover {
+            color: #52d6f4;
+        }*/
+
+    /* Position and style the close button (top right corner) */
+    .sidepanel .closebtn {
+        /*position: absolute;*/
+        top: 0;
+        /*right: 25px;*/
+        /*font-size: 42px;*/
+        /*margin-left: 50px;*/
+    }
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+    .openbtn:hover {
+        background-color: #444;
+    }
+
+.headerpanel {
+    height: 100%; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Stay on top */
+    backdrop-filter: blur(8px);
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 80px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+    .headerpanel a {
+        position:center;
+    }
+
+        .headerpanel a:hover {
+            color: #52d6f4;
+        }
+
 @media (max-width: 600px) {
     html {
         font-size: 16px;
@@ -234,61 +320,27 @@ details p {
 
     .page-wrap {
         grid-template-columns: 100%;
-        grid-template-rows: min-content min-content min-content 1fr;
+        grid-template-rows: min-content min-content 1fr;
     }
 
         .page-wrap > * {
             grid-column: 1/-1 !important;
             grid-row: auto !important;
         }
-}
-/*
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
 
-html {
-  font-size: 14px;
+    .page-sidebar {
+        display: none;
+    }
+    #mySidepanel {
+        display: initial;
+    }
+    #mySidepaneldiv {
+        display: initial;
+    }
+    #myHeaderpaneldiv {
+        display: initial;
+    }
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; 
-}*/
 
 
 
