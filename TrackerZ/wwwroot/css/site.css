@@ -305,6 +305,28 @@ details p {
             color: #52d6f4;
         }
 
+.cookiepanel {
+    height: 100%; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Stay on top */
+    backdrop-filter: blur(8px);
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 80px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+    .cookiepanel a {
+        position: center;
+    }
+
+        .cookiepanel a:hover {
+            color: #52d6f4;
+        }
+
 .hamburger-icon {
     margin: 0;
     padding: 19px 16px;

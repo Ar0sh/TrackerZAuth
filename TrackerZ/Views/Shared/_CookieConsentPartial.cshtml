@@ -8,22 +8,26 @@
 
 @if (showBanner)
 {
-    <div id="cookieConsent" 
-         style="font-weight:bold; position:absolute; background-color:#52d6f4; margin: 0 auto; padding: 0.55rem; width:90%; text-shadow: 2px 2px #000000" 
-         role="alert">
-            Please review our 
-            <a asp-controller="Home" asp-action="Privacy">
-                <span>C</span>ookie <span>P</span>olicy
-            </a> and click accept to continue.
-        <button type="button" 
-                class="btn btn-primary"
-                style="width: 100px"
-                data-dismiss="alert" 
-                aria-label="Close" 
-                data-cookie-string="@cookieString">
-            <span aria-hidden="true" style="color:white">Accept</span>
-        </button>
-    </div>
+<script type="text/javascript">
+    if (window.location.pathname != '/Home/Nothing') {
+        window.location.href = "/Home/Nothing";
+    }
+</script>
+<div id="cookieConsent" class="cookiepanel"
+     style="font-weight:bold; margin: 0 auto; width:100%; text-shadow: 2px 2px #000000; padding-left:20px; padding-right:20px"
+     role="alert">
+    This page uses cookies, click accept to continue to use Tracker<span id="tracker">Z</span>
+    <br />
+    <button type="button"
+            class="btn btn-primary"
+            style="width: 100px; margin-top:10px"
+            data-dismiss="alert"
+            aria-label="Close"
+            data-cookie-string="@cookieString"
+            onclick="location.href='@Url.Action("Index", "Home")'">
+        <span aria-hidden="true" style="color:white">Accept</span>
+    </button>
+</div>
     <script>
         (function () {
             var button = document.querySelector("#cookieConsent button[data-cookie-string]");
