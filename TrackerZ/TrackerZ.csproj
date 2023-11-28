@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-    <PackageReference Include="TinyMCE" Version="5.7.1" />
+    <PackageReference Include="TinyMCE" Version="6.8.0" />
   </ItemGroup>
 
 </Project>
