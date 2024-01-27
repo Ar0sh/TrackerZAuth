@@ -1,7 +1,9 @@
 ﻿@using TrackerZ.Views.Home
 <ul class="nav nav-pills flex-column">
-    <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-1 @ManageNavMenu.IndexNavClass(ViewContext)">Home</a></li>
-    <li class="nav-item"><a asp-controller="Home" asp-action="Table" class="btn btn-primary mt-1 @ManageNavMenu.TableNavClass(ViewContext)">Table</a></li>
-    <li class="nav-item"><a asp-controller="Home" asp-action="New" class="btn btn-primary mt-1 @ManageNavMenu.NewNavClass(ViewContext)">New Incident</a></li>
-    <li class="nav-item"><a asp-controller="Category" asp-action="Category" class="btn btn-primary mt-1 @ManageNavMenu.CategoryNavClass(ViewContext)">Category</a></li>
+  <li class="nav-item">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-1 @ManageNavMenu.IndexNavClass(ViewContext)">Home</a>
+  </li>
+  <li class="nav-item"><a asp-controller="Home" asp-action="Table" class="btn btn-primary mt-1 @ManageNavMenu.TableNavClass(ViewContext)">Table</a></li>
+  <li class="nav-item"><a asp-controller="Home" asp-action="New" class="btn btn-primary mt-1 @ManageNavMenu.NewNavClass(ViewContext)">New Incident</a></li>
+  <li class="nav-item"><a asp-controller="Category" asp-action="Category" class="btn btn-primary mt-1 @ManageNavMenu.CategoryNavClass(ViewContext)">Category</a></li>
 </ul>
